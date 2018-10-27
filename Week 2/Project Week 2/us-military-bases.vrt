@@ -1,0 +1,18 @@
+<OGRVRTDataSource>
+  <OGRVRTLayer name="us-military-bases">
+    <SrcDataSource relativeToVRT="1">us-military-bases.csv</SrcDataSource>
+    <GeometryType>wkbPolygon</GeometryType>
+    <LayerSRS>EPSG:4326</LayerSRS>
+    <GeometryField encoding="WKT" field="WKT" reportSrcColumn="FALSE" />
+    <Field name="FAC_NAME" src="FAC_NAME" type="String" width="50" />
+    <Field name="ST_NAME" src="ST_NAME" type="String" width="25" />
+    <Field name="ST_ABBR" src="ST_ABBR" type="String" width="3" />
+    <Field name="FAC_TYPE" src="FAC_TYPE" type="String" width="25" />
+    <Field name="CLOSURE" src="CLOSURE" type="String" width="15" />
+    <Field name="REALIGN" src="REALIGN" type="String" width="10" />
+    <Field name="BRAC" src="BRAC" type="String" width="25" />
+    <Field name="BRANCH" src="BRANCH" type="String" width="25" />
+    <Field name="STFIPS" src="STFIPS" type="String" width="2" />
+    <Field name="VERSION" src="VERSION" type="String" width="2" />
+  </OGRVRTLayer>
+</OGRVRTDataSource>

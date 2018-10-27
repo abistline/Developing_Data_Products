@@ -1,0 +1,39 @@
+---
+title: "Maryland Military Installations"
+output: html_document
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(dplyr)
+library(sf)
+milBases = read.csv("us-military-bases.csv")
+mdBases = filter(milBases, ST_NAME=="MARYLAND") %>%
+  select(ï..WKT, FAC_NAME, ST_NAME, BRANCH)
+names(mdBases) = c("shape", "name", "state", "branch")
+mdBases = mutate(mdBases, shape=st_as_sfc(shape, precision=10),
+                 name=as.character(name), state=as.character(state),
+                 branch=as.character(branch))
+```
+
+```{r, echo=FALSE, message=FALSE}
+library(rgdal)
+library(sp)
+
+states <- readOGR(dsn=getwd(), verbose=FALSE,
+                  layer = "cb_2017_us_state_500k",
+                  GDAL1_integer64_policy = TRUE)
+
+```
+
+```{r, echo=FALSE, message=FALSE, map1$fullScreen(TRUE)}
+library(leaflet)
+
+md <- subset(states, states$STUSPS=="MD")
+
+md %>%
+  leaflet() %>% 
+  addTiles() %>%
+  addPolygons(weight=1, label=paste(mdBases$branch, " - ", mdBases$name),
+              data=mdBases$shape) %>%
+  addPolygons(data=md, color="black", weight=1.5, fill=FALSE)
+```

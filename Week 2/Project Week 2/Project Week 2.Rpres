@@ -1,0 +1,50 @@
+---
+title: "Project Week 2"
+author: "Austin L. Bistline"
+date: "October 21, 2018"
+output: ioslides_presentation
+---
+
+## US Military Bases
+
+```{r, echo=FALSE}
+library(dplyr)
+library(sf)
+milBases = read.csv("us-military-bases.csv")
+mdBases = filter(milBases, ST_NAME=="MARYLAND") %>%
+  select(ï..WKT, FAC_NAME, ST_NAME, BRANCH, STFIPS)
+names(mdBases) = c("shape", "name", "state", "branch", "stfips")
+mdBases = mutate(mdBases, shape=st_as_sfc(shape, precision=10),
+                 name=as.character(name), state=as.character(state),
+                 branch=as.character(branch), stfips=as.character(stfips))
+```
+
+```{r, echo=FALSE}
+milBases2 = select(milBases, ï..WKT, FAC_NAME, ST_NAME, BRANCH)
+names(milBases2) = c("shape", "name", "state", "branch")
+milBases2 = mutate(milBases2, shape=st_as_sfc(shape, precision=10), name=as.character(name),
+         state=as.character(state), branch=as.character(branch))
+```
+
+
+```{r, echo=FALSE, eval=FALSE}
+library(leaflet)
+
+mdBases %>%
+  leaflet() %>% 
+  setView(lng=-77.30000000, lat=38.75, zoom=7.5) %>%
+  addTiles() %>%
+  addPolygons(weight=1, label=paste(mdBases$branch, " - ", mdBases$name),
+              data=mdBases$shape)
+```
+
+```{r, echo=FALSE}
+library(leaflet)
+
+milBases2 %>%
+  leaflet() %>% 
+  setView(lng=-95.0518773375, lat=39.742851450772584, zoom=4) %>%
+  addTiles() %>%
+  addPolygons(weight=1, label=paste(milBases2$branch, " - ", milBases2$name),
+              data=milBases2$shape)
+```
