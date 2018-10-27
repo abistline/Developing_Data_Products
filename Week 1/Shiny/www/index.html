@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="application/shiny-singletons"></script>
+      <script type="application/html-dependencies">json2[2014.02.04];jquery[1.12.4];shiny[1.1.0];ionrangeslider[2.1.6];strftime[0.9.2];bootstrap[3.3.7]</script>
+        <script src="shared/json2-min.js"></script>
+          <script src="shared/jquery.min.js"></script>
+            <link href="shared/shiny.css" rel="stylesheet" />
+              <script src="shared/shiny.min.js"></script>
+                <link href="shared/ionrangeslider/css/ion.rangeSlider.css" rel="stylesheet" />
+                  <link href="shared/ionrangeslider/css/ion.rangeSlider.skinShiny.css" rel="stylesheet" />
+                    <script src="shared/ionrangeslider/js/ion.rangeSlider.min.js"></script>
+                      <script src="shared/strftime/strftime-min.js"></script>
+                        <meta name="viewport" content="width=device-width, initial-scale=1" />
+                          <link href="shared/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+                            <script src="shared/bootstrap/js/bootstrap.min.js"></script>
+                              <script src="shared/bootstrap/shim/html5shiv.min.js"></script>
+                                <script src="shared/bootstrap/shim/respond.min.js"></script>  <title>Predict Horesepower from MPG</title>
+                                  
+                                  </head>
+                                  
+                                  <body>
+                                  <div class="container-fluid">
+                                    <h2>Predict Horesepower from MPG</h2>
+                                    <div class="row">
+                                      <div class="col-sm-4">
+                                        <form class="well">
+                                          <div class="form-group shiny-input-container">
+                                            <label class="control-label" for="sliderMPG">What is the MPG of the car?</label>
+                                              <input class="js-range-slider" id="sliderMPG" data-min="10" data-max="35" data-from="20" data-step="1" data-grid="true" data-grid-num="8.33333333333333" data-grid-snap="false" data-prettify-separator="," data-prettify-enabled="true" data-keyboard="true" data-data-type="number"/>
+                                                </div>
+                                                <div class="form-group shiny-input-container">
+                                                  <div class="checkbox">
+                                                    <label>
+                                                    <input id="showModel1" type="checkbox" checked="checked"/>
+                                                      <span>Show/Hide Model 1</span>
+                                                      </label>
+                                                      </div>
+                                                      </div>
+                                                      <div class="form-group shiny-input-container">
+                                                        <div class="checkbox">
+                                                          <label>
+                                                          <input id="showModel2" type="checkbox" checked="checked"/>
+                                                            <span>Show/HIde Model 2</span>
+                                                            </label>
+                                                            </div>
+                                                            </div>
+                                                            <div>
+                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                              </div>
+                                                              </form>
+                                                              </div>
+                                                              <div class="col-sm-8">
+                                                                <div id="plot1" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
+                                                                  <h3>Predicted Horsepower from Model 1:</h3>
+                                                                  <div id="pred1" class="shiny-text-output"></div>
+                                                                    <h3>Predicted Horsepower from Model 2:</h3>
+                                                                    <div id="pred2" class="shiny-text-output"></div>
+                                                                      </div>
+                                                                      </div>
+                                                                      </div>
+                                                                      </body>
+                                                                      
+                                                                      </html>
